@@ -1,4 +1,4 @@
-export const search = query =>
+export const fetchTvShowsByName = query =>
   fetch(`http://api.tvmaze.com/search/shows?q=${query}`, {
     method: "GET",
     mode: "cors"
@@ -6,7 +6,7 @@ export const search = query =>
     .then(response => response.json())
     .then(shows => shows.map(show => show.show));
 
-export const tvShow = showId =>
+export const getTvShowById = showId =>
   fetch(`http://api.tvmaze.com/shows/${showId}?embed=cast`, {
     method: "GET",
     mode: "cors"

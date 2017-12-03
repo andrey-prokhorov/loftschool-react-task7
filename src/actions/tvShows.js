@@ -1,7 +1,7 @@
 import { createActions } from "redux-actions";
 
-export const { showsRequest, showsSuccess, showsFailure } = createActions({
-  SHOWS_REQUEST: undefined,
-  SHOWS_SUCCESS: undefined,
-  SHOWS_FAILURE: undefined
-});
+export const { tvShowRequest, tvShowSuccess, tvShowFailure } = createActions(
+  "TV_SHOW_REQUEST",
+  "TV_SHOW_SUCCESS",
+  "TV_SHOW_FAILURE"
+);

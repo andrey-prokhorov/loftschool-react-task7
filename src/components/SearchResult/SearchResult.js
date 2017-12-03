@@ -7,12 +7,27 @@ class SearchResult extends Component {
     const { id, image, name, summary } = this.props.data;
 
     return (
-      <div className="search-result-container">
+      <div>
         <div className="search-result-header">
           <Link to={"/tv-show/" + id}>{name}</Link>
         </div>
-        {image && image.medium && <img src={image.medium} alt={name} />}
-        {summary && <div dangerouslySetInnerHTML={{ __html: summary }} />}
+
+        <img
+          src={
+            image && image.medium
+              ? image && image.medium
+              : "http://via.placeholder.com/210x295?text=No+image"
+          }
+          alt={name}
+        />
+
+        <p className="search-result-summary">
+          {summary ? (
+            <div dangerouslySetInnerHTML={{ __html: summary }} />
+          ) : (
+            <span>No summary</span>
+          )}
+        </p>
       </div>
     );
   }

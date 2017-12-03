@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import search from "./search";
-import tvShows from "./tvShows";
+import tvShow from "./tvShow";
 
 export default combineReducers({
   search,
-  tvShows
+  tvShow
 });

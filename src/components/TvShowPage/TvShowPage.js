@@ -1,60 +1,77 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { showsRequest } from "../../actions/tvShows";
+import { tvShowRequest } from "../../actions/tvShows";
+import "./TvShowPage.css";
 
 export class TvShowPage extends Component {
-  state = {
-    showsId: null
-  };
-
   componentDidMount() {
-    const { match: { params }, shows: { entities } } = this.props;
-    const showsId = Number(params.id);
-    this.setState({ showsId });
-
-    const item = entities.find(item => item.id === showsId);
-    if (!item) {
-      this.props.showsRequest(showsId);
-    }
+    this.props.tvShowRequest(+this.props.match.params.id);
   }
 
   render() {
-    const { isFetching, entities, error } = this.props.shows;
-    const item = entities.find(item => item.id === this.state.showsId);
-    const { name, image, summary, _embedded } = item;
-    const cast = _embedded.cast;
-    console.log(cast);
+    const { tvShow, isFetching, error } = this.props;
+    const cast = tvShow._embedded ? tvShow._embedded.cast : null;
 
     if (isFetching) {
       return "Loading...";
     }
 
-    if (error !== null) {
-      return "An error occuired" + error;
-    }
-
-    if (!item) {
-      return "An error occuired: wrong id";
+    if (error) {
+      return "An error occuired: " + error;
     }
 
     return (
-      <div className="tv-show">
-        <div className="tv-show-header">
-          <p>{name}</p>
-          {image && <img src={image.medium} alt={name} />}
-          <div dangerouslySetInnerHTML={{ __html: summary }} />
-        </div>
+      <div>
+        {tvShow && (
+          <div className="tv-show">
+            <div className="tv-show-name">
+              <h1>{tvShow.name}</h1>
+            </div>
+
+            <div className="tv-show-image">
+              {tvShow.image && (
+                <img src={tvShow.image.medium} alt={tvShow.name} />
+              )}
+            </div>
+
+            <div className="tv-show-summary">
+              <div dangerouslySetInnerHTML={{ __html: tvShow.summary }} />
+            </div>
+
+            {cast && (
+              <div>
+                <h1>Cast</h1>
+
+                <div className="tv-show-cast">
+                  {cast &&
+                    cast.map(actor => (
+                      <div key={actor.person.id} className="actor">
+                        <h3>{actor.person.name}</h3>
+                        <img
+                          src={
+                            actor.person.image
+                              ? actor.person.image.medium
+                              : "http://via.placeholder.com/210x295?text=No+image"
+                          }
+                          alt={actor.person.name}
+                        />
+                      </div>
+                    ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  shows: state.shows
+  tvShow: state.tvShow.data,
+  isFetching: state.tvShow.isFetching
 });
 
-const mapDispathToProps = {
-  showsRequest: showsRequest
-};
+const mapDispathToProps = { tvShowRequest };
 
 export default connect(mapStateToProps, mapDispathToProps)(TvShowPage);

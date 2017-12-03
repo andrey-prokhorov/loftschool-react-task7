@@ -1,0 +1,23 @@
+.tv-show-cast {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.actor {
+  padding: 10px;
+}
+
+h1 {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.tv-show-summary {
+  max-width: 70%;
+}
+
+body {
+  margin-left: 20px;
+  padding-bottom: 150px;
+}
