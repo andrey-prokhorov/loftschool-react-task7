@@ -1,5 +1,5 @@
 export const fetchTvShowsByName = query =>
-  fetch(`http://api.tvmaze.com/search/shows?q=${query}`, {
+  fetch(`https://api.tvmaze.com/search/shows?q=${query}`, {
     method: "GET",
     mode: "cors"
   })
