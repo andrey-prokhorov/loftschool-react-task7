@@ -42,7 +42,7 @@ export class SearchPage extends Component {
         <div className="search-input">
           <input
             type="text"
-            placeholder="Search by TV-serie name"
+            placeholder="Search television programs by name..."
             value={this.state.searchInput}
             onChange={this.handleChange}
             onKeyDown={this.handleKeyDown}
