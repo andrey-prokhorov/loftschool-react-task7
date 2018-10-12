@@ -41,6 +41,10 @@ jobs:
       - image: circleci/node:7.10
     working_directory: ~/repo
     steps:
+      - run:
+          name: Fix host authenticity for 40.89.139.82
+          command: ssh-keyscan 40.89.139.82 >> ~/.ssh/known_hosts
+
       - add-ssh-keys:
           fingerprints:
             - '11:95:f7:ab:a3:67:f9:c6:7f:56:e7:a0:15:e6:e0:29'
