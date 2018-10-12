@@ -18,6 +18,7 @@ jobs:
 
     steps:
       - checkout
+      - run: ssh-keyscan 40.89.139.82 >> ~/.ssh/known_hosts
 
       # Download and cache dependencies
       - restore_cache:
@@ -41,10 +42,6 @@ jobs:
       - image: circleci/node:7.10
     working_directory: ~/repo
     steps:
-      - run:
-          name: Fix host authenticity for 40.89.139.82
-          command: echo fms-dev.francecentral.cloudapp.azure.com,40.89.139.82 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCtfSCFOHyx/xzxfog6rv1Gy6x0Y46KZTqu/9BRYnEz7rF6RS08vxpIbh2A2O8SxNpLMRfS+I+vBFQGoZHuJD5g= >> ~/.ssh/known_hosts
-
       - add-ssh-keys:
           fingerprints:
             - '11:95:f7:ab:a3:67:f9:c6:7f:56:e7:a0:15:e6:e0:29'
