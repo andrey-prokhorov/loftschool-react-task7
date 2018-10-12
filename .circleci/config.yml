@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - checkout
-      - run: ssh-keyscan 40.89.139.82 >> ~/.ssh/known_hosts
+      - run: echo fms-dev.francecentral.cloudapp.azure.com,40.89.139.82 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCtfSCFOHyx/xzxfog6rv1Gy6x0Y46KZTqu/9BRYnEz7rF6RS08vxpIbh2A2O8SxNpLMRfS+I+vBFQGoZHuJD5g= >> ~/.ssh/known_hosts
 
       # Download and cache dependencies
       - restore_cache:
