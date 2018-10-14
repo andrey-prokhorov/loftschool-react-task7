@@ -47,6 +47,9 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - '11:95:f7:ab:a3:67:f9:c6:7f:56:e7:a0:15:e6:e0:29'
+
+      - run: ssh-keyscan 40.89.139.82 >> ~/.ssh/known_hosts
+
       - run:
           name: upload files to azure
           command: sudo scp -r loftschool-react-task7/* andrey@fms-dev.francecentral.cloudapp.azure.com:/etc/nginx/sites-available/task7
