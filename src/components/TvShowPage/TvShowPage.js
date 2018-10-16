@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { tvShowRequest } from "../../actions/tvShows";
-import "./TvShowPage.css";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { tvShowRequest } from '../../actions/tvShows';
+import './TvShowPage.css';
 
 export class TvShowPage extends Component {
   componentDidMount() {
@@ -13,11 +13,11 @@ export class TvShowPage extends Component {
     const cast = tvShow._embedded ? tvShow._embedded.cast : null;
 
     if (isFetching) {
-      return "Loading...";
+      return 'Loading...';
     }
 
     if (error) {
-      return "An error occuired: " + error;
+      return 'An error occuired: ' + error;
     }
 
     return (
@@ -51,7 +51,7 @@ export class TvShowPage extends Component {
                           src={
                             actor.person.image
                               ? actor.person.image.medium
-                              : "http://via.placeholder.com/210x295?text=No+image"
+                              : 'https://via.placeholder.com/210x295?text=No+image'
                           }
                           alt={actor.person.name}
                         />
@@ -74,4 +74,7 @@ const mapStateToProps = state => ({
 
 const mapDispathToProps = { tvShowRequest };
 
-export default connect(mapStateToProps, mapDispathToProps)(TvShowPage);
+export default connect(
+  mapStateToProps,
+  mapDispathToProps
+)(TvShowPage);
