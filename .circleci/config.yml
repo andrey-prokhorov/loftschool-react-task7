@@ -43,7 +43,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - add_ssh_keys
-      - run: echo 40.118.45.73 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0IqVOIbRoOC2rToQJlKJgVheH65rAzG14X40+ysM8ltjYu5ciNEiQHwL81oM75Utcm5JyXpMqCsFearWwmSGs= >> ~/.ssh/known_hosts
+      - run: echo '40.118.45.73 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0IqVOIbRoOC2rToQJlKJgVheH65rAzG14X40+ysM8ltjYu5ciNEiQHwL81oM75Utcm5JyXpMqCsFearWwmSGs=' >> ~/.ssh/known_hosts
 
       - run:
           name: upload files to azure
