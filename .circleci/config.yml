@@ -18,9 +18,7 @@ jobs:
 
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - '11:95:f7:ab:a3:67:f9:c6:7f:56:e7:a0:15:e6:e0:29'
+      - add_ssh_keys
 
       # Download and cache dependencies
       - restore_cache:
@@ -44,15 +42,12 @@ jobs:
       - image: circleci/node:7.10
     working_directory: ~/repo
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - '11:95:f7:ab:a3:67:f9:c6:7f:56:e7:a0:15:e6:e0:29'
-
-      - run: echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCT2K3RJXXwZlXMXGHY5PmFpO3Lf8ADoBvS9uHP3fhAbRuP+ZKiZE1dzRHn/3JCu2+/3Tkf4YQa6/CKE3c/M9Tz8kMVLmdc7svD1Jo6VvnVoCufhq9qSx8Cmpj2k/n+rFt/b08iETj9zp+Wmtjzmd4II9Zm4V/S7YYojsjWWd72s8O1PIKdBzT+u/Wg7a2R3u0y7UVsXdboL+GzfDqjayfiumIjkiX24iWFasbwD2CA4KI/mgzstFO0TShSHSocK5i9AlDgM2hx7WLcO+NhsgDGd4LTy7X3KAgDUHXANSPZ0LgXkH6ATQOVDfpEbRHNHPWxljboTkEPHR4nOa8fzbsP >> ~/.ssh/known_hosts
+      - add_ssh_keys
+      - run: echo 40.118.45.73 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0IqVOIbRoOC2rToQJlKJgVheH65rAzG14X40+ysM8ltjYu5ciNEiQHwL81oM75Utcm5JyXpMqCsFearWwmSGs= >> ~/.ssh/known_hosts
 
       - run:
           name: upload files to azure
-          command: sudo scp -r loftschool-react-task7/* andrey@fms-dev.francecentral.cloudapp.azure.com:/etc/nginx/sites-available/task7
+          command: sudo scp -r loftschool-react-task7/* andrey@40.118.45.73:~/circleupload
 
 workflows:
   version: 2
