@@ -46,8 +46,7 @@ jobs:
       - run:
           name: upload files to azure
           command: |
-            echo '40.68.130.151 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0IqVOIbRoOC2rToQJlKJgVheH65rAzG14X40+ysM8ltjYu5ciNEiQHwL81oM75Utcm5JyXpMqCsFearWwmSGs=' >> ~/.ssh/known_hosts
-            sudo scp -r loftschool-react-task7/* andrey@40.68.130.151:~/circleupload
+            ssh $SSH_USER@$SSH_HOST sudo scp -r loftschool-react-task7/* $SSH_USER@$SSH_HOST:~/circleupload
 
 workflows:
   version: 2
