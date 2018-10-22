@@ -42,9 +42,12 @@ jobs:
       - image: circleci/node:7.10
     steps:
       - add_ssh_keys
-      - run: |
-        echo '40.118.45.73 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0IqVOIbRoOC2rToQJlKJgVheH65rAzG14X40+ysM8ltjYu5ciNEiQHwL81oM75Utcm5JyXpMqCsFearWwmSGs=' >> ~/.ssh/known_hosts
-        sudo scp -r loftschool-react-task7/* andrey@40.118.45.73:~/circleupload
+
+      - run:
+          name: upload files to azure
+          command: |
+            echo '40.118.45.73 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0IqVOIbRoOC2rToQJlKJgVheH65rAzG14X40+ysM8ltjYu5ciNEiQHwL81oM75Utcm5JyXpMqCsFearWwmSGs=' >> ~/.ssh/known_hosts
+            sudo scp -r loftschool-react-task7/* andrey@40.118.45.73:~/circleupload
 
 workflows:
   version: 2
