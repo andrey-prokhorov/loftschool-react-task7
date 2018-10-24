@@ -14,6 +14,8 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
+    working_directory: ~/repo
+
     steps:
       - checkout
       - add_ssh_keys
@@ -47,7 +49,7 @@ jobs:
           name: upload files to azure
           command: |
             echo '40.68.130.151 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0IqVOIbRoOC2rToQJlKJgVheH65rAzG14X40+ysM8ltjYu5ciNEiQHwL81oM75Utcm5JyXpMqCsFearWwmSGs=' >> ~/.ssh/known_hosts
-            scp -r ~/loftschool-react-task7/* andrey@40.68.130.151:~/circleupload
+            scp -r /home/circleci/loftschool-react-task7/* andrey@40.68.130.151:~/circleupload
 
 workflows:
   version: 2
