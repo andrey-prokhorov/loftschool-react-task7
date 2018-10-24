@@ -42,6 +42,9 @@ jobs:
   deploy:
     docker:
       - image: circleci/node:7.10
+
+    working_directory: ~/repo
+
     steps:
       - add_ssh_keys
 
@@ -49,7 +52,7 @@ jobs:
           name: upload files to azure
           command: |
             echo '40.68.130.151 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0IqVOIbRoOC2rToQJlKJgVheH65rAzG14X40+ysM8ltjYu5ciNEiQHwL81oM75Utcm5JyXpMqCsFearWwmSGs=' >> ~/.ssh/known_hosts
-            scp -r /home/circleci/repo andrey@40.68.130.151:~/circleupload
+            scp -r ~/repo andrey@40.68.130.151:~/circleupload
 
 workflows:
   version: 2
