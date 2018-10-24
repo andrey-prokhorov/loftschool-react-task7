@@ -49,10 +49,10 @@ jobs:
     docker:
       - image: circleci/node:7.10
 
-      - attach_workspace:
-          at: ~/repo
-
       steps:
+        - attach_workspace:
+            at: ~/repo
+
         - add_ssh_keys
 
         - run:
