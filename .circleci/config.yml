@@ -30,6 +30,12 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: pwd
+      - run: ls -l
+
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - *
 
       - save_cache:
           paths:
@@ -43,16 +49,17 @@ jobs:
     docker:
       - image: circleci/node:7.10
 
-    working_directory: ~/repo
+      - attach_workspace:
+          at: ~/repo
 
-    steps:
-      - add_ssh_keys
+      steps:
+        - add_ssh_keys
 
-      - run:
-          name: upload files to azure
-          command: |
-            echo '40.68.130.151 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0IqVOIbRoOC2rToQJlKJgVheH65rAzG14X40+ysM8ltjYu5ciNEiQHwL81oM75Utcm5JyXpMqCsFearWwmSGs=' >> ~/.ssh/known_hosts
-            scp -r ~/repo andrey@40.68.130.151:~/circleupload
+        - run:
+            name: upload files to azure
+            command: |
+              echo '40.68.130.151 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0IqVOIbRoOC2rToQJlKJgVheH65rAzG14X40+ysM8ltjYu5ciNEiQHwL81oM75Utcm5JyXpMqCsFearWwmSGs=' >> ~/.ssh/known_hosts
+              scp -r ~/repo andrey@40.68.130.151:~/circleupload
 
 workflows:
   version: 2
