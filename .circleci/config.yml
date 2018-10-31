@@ -54,8 +54,8 @@ jobs:
       - run:
           name: upload files to azure
           command: |
-            echo '40.68.130.151 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBP0IqVOIbRoOC2rToQJlKJgVheH65rAzG14X40+ysM8ltjYu5ciNEiQHwL81oM75Utcm5JyXpMqCsFearWwmSGs=' >> ~/.ssh/known_hosts
-            scp -r ~/repo andrey@40.68.130.151:~/circleupload
+            echo '18.237.109.144 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHmTsc/3ChHor4o8bCSsRuuKrrbgRWjetnFgpx9LqYSn0ihQrLqckYJ61e6rA7oK1HKBLfkg0ElBbrp1yMilMOk=' >> ~/.ssh/known_hosts
+            scp -r ~/repo ubuntu@18.237.109.144:~/circleupload
 
 workflows:
   version: 2
